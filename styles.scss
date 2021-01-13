@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+    background: rgb(55, 6, 23);
+    background: linear-gradient(
+        360deg,
+        rgba(55, 6, 23, 1) 0%,
+        rgba(106, 4, 15, 1) 15%,
+        rgba(157, 2, 8, 1) 29%,
+        rgba(208, 0, 0, 1) 41%,
+        rgba(220, 47, 2, 1) 53%,
+        rgba(232, 93, 4, 1) 64%,
+        rgba(244, 140, 6, 1) 78%,
+        rgba(250, 163, 7, 1) 90%,
+        rgba(255, 186, 8, 1) 100%
+    );
+}
+body {
+    font-family: "Ubuntu", sans-serif;
+}
+header {
+    height: 20vh;
+    background: rgb(3, 4, 94);
+    background: linear-gradient(
+        90deg,
+        rgba(3, 4, 94, 1) 0%,
+        rgba(2, 62, 138, 1) 15%,
+        rgba(0, 119, 182, 1) 29%,
+        rgba(0, 150, 199, 1) 41%,
+        rgba(0, 180, 216, 1) 53%,
+        rgba(72, 202, 228, 1) 64%,
+        rgba(144, 224, 239, 1) 78%,
+        rgba(173, 232, 244, 1) 90%,
+        rgba(202, 240, 248, 1) 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#gameboard{
+    display: none;
+}
+#player{
+    padding: 5%;
+    width: 50vw;
+    .player{
+        display: block;
+        padding: 10px 0 10px;
+        font-size: 1.7em;
+        input[type="text"]{
+            margin-top: 10px;
+            height: 40px;
+            width: 100%;
+            border: none;
+            border-bottom: 3px solid black;
+            transition: all 3s ease-in-out;
+            font-size: 1.2em;   
+            &:focus{
+                outline: none; 
+            }
+        }
+    }
+}
+#btn-start,
+#btn-restart{
+    padding: 15px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #00b4d8;
+    border: 2px solid #0077b6;
+    transition: background-color 300ms ease-in-out;
+    &:hover{
+        background-color: #48cae4;
+    }
+    &:focus{
+        outline: none;
+    }
+}
+#btn-restart{
+    margin-top: 30px;
+    width: 150%;
+}
+main {
+    display: flex;
+    justify-content: center;
+    .container {
+        width: 60vw;
+        padding: 10%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        .box {
+            border-top: 2px solid #f0f0f0;
+            border-right: 2px solid #f0f0f0;
+            &:nth-child(3),
+            &:nth-child(6),
+            &:nth-child(9){
+                border-right: none;
+            }
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(3){
+                border-top: none;
+            }
+            //width: 50px;
+            height: 100px;
+            cursor: pointer;
+        }
+    }
+}
+@media only screen and (max-width: 768px){
+    main{
+        .container{
+            width: 80vw;
+            .box{
+                height: 50px;
+            }
+        }
+    }
+}

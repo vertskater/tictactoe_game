@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Tic Tac Toe Game</title>
+</head>
+
+<body>
+    <header>
+        <h1>Tic Tac Toe - Game</h1>
+    </header>
+    <main>
+        <section id="gameboard" class="container">
+            <div class="box" data-index="0"></div>
+            <div class="box" data-index="1"></div>
+            <div class="box" data-index="2"></div>
+            <div class="box" data-index="3"></div>
+            <div class="box" data-index="4"></div>
+            <div class="box" data-index="5"></div>
+            <div class="box" data-index="6"></div>
+            <div class="box" data-index="7"></div>
+            <div class="box" data-index="8"></div>
+            <span class="player">
+                <button id="btn-restart">Restart</button>
+            </span>
+        </section>
+        <section id="player">
+            <span class="player">
+                <label for="fname">Player 1:</label>
+                <input type="text">
+            </span>
+            <span class="player">
+                <label for="fname">Player 2:</label>
+                <input type="text">
+            </span>
+            <span class="player">
+                <button id="btn-start">Start Game</button>
+            </span>
+        </section>
+    </main>
+    <script src="main.js"></script>
+</body>
+
+</html>
