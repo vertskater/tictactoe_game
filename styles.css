@@ -35,29 +35,27 @@ header {
   display: none;
 }
 
-#player {
+#player-render {
   padding: 5%;
   width: 50vw;
 }
 
-#player .player {
+#player-render .player {
   display: block;
   padding: 10px 0 10px;
   font-size: 1.7em;
 }
 
-#player .player input[type="text"] {
+#player-render .player input[type="text"] {
   margin-top: 10px;
   height: 40px;
   width: 100%;
   border: none;
   border-bottom: 3px solid black;
-  -webkit-transition: all 3s ease-in-out;
-  transition: all 3s ease-in-out;
   font-size: 1.2em;
 }
 
-#player .player input[type="text"]:focus {
+#player-render .player input[type="text"]:focus {
   outline: none;
 }
 

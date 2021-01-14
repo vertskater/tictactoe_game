@@ -43,7 +43,7 @@ header {
 #gameboard{
     display: none;
 }
-#player{
+#player-render{
     padding: 5%;
     width: 50vw;
     .player{
@@ -56,7 +56,6 @@ header {
             width: 100%;
             border: none;
             border-bottom: 3px solid black;
-            transition: all 3s ease-in-out;
             font-size: 1.2em;   
             &:focus{
                 outline: none; 
