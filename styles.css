@@ -106,6 +106,9 @@ main .container {
 main .container .box {
   border-top: 2px solid #f0f0f0;
   border-right: 2px solid #f0f0f0;
+  font-size: 5vw;
+  color: #fff;
+  text-align: center;
   height: 100px;
   cursor: pointer;
 }
