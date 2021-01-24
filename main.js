@@ -39,8 +39,8 @@ const gameInit = (() => {
     }
     //Factory Function for Players
     const Player = (name, sign) => {
-        let turn = false;
-        return { name, sign, turn }
+        let won = false;
+        return { name, sign, won }
     }
     // Function to create Players
     function _createPlayers() {
@@ -56,20 +56,22 @@ const game = (() => {
     let gameBoard = {
         gameBoardHtml: gameInit.gameBoardHtml,
         board: [],
-        gameController: function (players) {
+        gameController: function () {
             this.gameBoardHtml.addEventListener('click', (e) => {
                 if (e.target.matches('.box')) {
                     let key = e.target;
                     let index = key.dataset.index;
                     let playerIndex = _playerTurn();
+                    
                     if (playerIndex % 2 === 0) {
                         this.board[index] = players[0].sign;
                         _render(key, 0);
-                    }else{
+                    } else {
                         this.board[index] = players[1].sign;
                         _render(key, 1);
                     }
-                    //console.log(players[0].name, players[1].name)
+                    _gameOutcome(this.board);
+                    _whichPlayerwon(playerIndex);
                 }
             })
         }
@@ -82,11 +84,66 @@ const game = (() => {
         }
         return index
     }
-    function _render(html, index){
+    function _render(html, index) {
         html.textContent = players[index].sign;
     }
+
+    let possibleWinning = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ]
+
+    function _gameOutcome(board) {
+        possibleWinning.forEach((item) => {
+            if (board[item[0]] === players[0].sign &&
+                board[item[1]] === players[0].sign &&
+                board[item[2]] === players[0].sign) {
+                players[0].won = true;
+            }
+            if (board[item[0]] === players[1].sign &&
+                board[item[1]] === players[1].sign &&
+                board[item[2]] === players[1].sign) {
+                players[1].won = true;
+            }
+            
+        })
+    }
+    function _whichPlayerwon(index){
+        let tie = false;
+        for(let i in players){
+            if(players[i].won){
+                _renderWinner(i)
+            }
+            if(index === 8 && !players[0].won && !players[1].won){
+                tie = true;
+                _renderWinner(tie); 
+                return; //to avoid, the function will be invoked 2-times, because the loop is for both players
+            }
+        }
+     }
+     function _renderWinner(i){
+        let boxes = document.querySelectorAll('.box');
+        let winnerText = document.createElement('h2');
+        for(let item of boxes){
+            item.style.display = 'none';
+        }
+        if(i === true){
+            winnerText.textContent = 'It´s a tie, try it again';
+        }else{
+            winnerText.textContent = players[i].name + ' has won the game';
+        }
+        gameBoard.gameBoardHtml.style.display = 'flex';
+        gameBoard.gameBoardHtml.style.flexFlow = 'wrap-reverse';
+        gameBoard.gameBoardHtml.appendChild(winnerText);
+     }
     gameBoard.gameController(players);
-    
-    return gameBoard;
+
+    //return gameBoard;
 })(gameInit.players, gameInit.gameBoardHtml)
 

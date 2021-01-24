@@ -4,38 +4,14 @@
 }
 html {
     height: 100%;
-    background: rgb(55, 6, 23);
-    background: linear-gradient(
-        360deg,
-        rgba(55, 6, 23, 1) 0%,
-        rgba(106, 4, 15, 1) 15%,
-        rgba(157, 2, 8, 1) 29%,
-        rgba(208, 0, 0, 1) 41%,
-        rgba(220, 47, 2, 1) 53%,
-        rgba(232, 93, 4, 1) 64%,
-        rgba(244, 140, 6, 1) 78%,
-        rgba(250, 163, 7, 1) 90%,
-        rgba(255, 186, 8, 1) 100%
-    );
+    background-color: #48cae4;
 }
 body {
     font-family: "Ubuntu", sans-serif;
 }
 header {
     height: 20vh;
-    background: rgb(3, 4, 94);
-    background: linear-gradient(
-        90deg,
-        rgba(3, 4, 94, 1) 0%,
-        rgba(2, 62, 138, 1) 15%,
-        rgba(0, 119, 182, 1) 29%,
-        rgba(0, 150, 199, 1) 41%,
-        rgba(0, 180, 216, 1) 53%,
-        rgba(72, 202, 228, 1) 64%,
-        rgba(144, 224, 239, 1) 78%,
-        rgba(173, 232, 244, 1) 90%,
-        rgba(202, 240, 248, 1) 100%
-    );
+    background-color: #E3D12D;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +55,7 @@ header {
     }
 }
 #btn-restart{
-    margin-top: 30px;
+    margin-top: 80px;
     width: 150%;
 }
 main {
@@ -118,6 +94,16 @@ main {
             width: 80vw;
             .box{
                 height: 50px;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1929px){
+    main{
+        .container{
+            width: 80vw;
+            .box{
+                height: 6vw;
             }
         }
     }

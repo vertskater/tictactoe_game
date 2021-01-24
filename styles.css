@@ -6,9 +6,7 @@
 
 html {
   height: 100%;
-  background: #370617;
-  background: -webkit-gradient(linear, left bottom, left top, from(#370617), color-stop(15%, #6a040f), color-stop(29%, #9d0208), color-stop(41%, #d00000), color-stop(53%, #dc2f02), color-stop(64%, #e85d04), color-stop(78%, #f48c06), color-stop(90%, #faa307), to(#ffba08));
-  background: linear-gradient(360deg, #370617 0%, #6a040f 15%, #9d0208 29%, #d00000 41%, #dc2f02 53%, #e85d04 64%, #f48c06 78%, #faa307 90%, #ffba08 100%);
+  background-color: #48cae4;
 }
 
 body {
@@ -17,9 +15,7 @@ body {
 
 header {
   height: 20vh;
-  background: #03045e;
-  background: -webkit-gradient(linear, left top, right top, from(#03045e), color-stop(15%, #023e8a), color-stop(29%, #0077b6), color-stop(41%, #0096c7), color-stop(53%, #00b4d8), color-stop(64%, #48cae4), color-stop(78%, #90e0ef), color-stop(90%, #ade8f4), to(#caf0f8));
-  background: linear-gradient(90deg, #03045e 0%, #023e8a 15%, #0077b6 29%, #0096c7 41%, #00b4d8 53%, #48cae4 64%, #90e0ef 78%, #ade8f4 90%, #caf0f8 100%);
+  background-color: #E3D12D;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,7 +77,7 @@ header {
 }
 
 #btn-restart {
-  margin-top: 30px;
+  margin-top: 80px;
   width: 150%;
 }
 
@@ -127,6 +123,15 @@ main .container .box:nth-child(1), main .container .box:nth-child(2), main .cont
   }
   main .container .box {
     height: 50px;
+  }
+}
+
+@media only screen and (min-width: 1929px) {
+  main .container {
+    width: 80vw;
+  }
+  main .container .box {
+    height: 6vw;
   }
 }
 /*# sourceMappingURL=styles.css.map */
