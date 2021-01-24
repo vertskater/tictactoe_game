@@ -52,6 +52,7 @@ const gameInit = (() => {
 })()
 
 const game = (() => {
+    let btnRestartGame = document.querySelector('#btn-restart');
     let players = gameInit.players;
     let gameBoard = {
         gameBoardHtml: gameInit.gameBoardHtml,
@@ -62,7 +63,7 @@ const game = (() => {
                     let key = e.target;
                     let index = key.dataset.index;
                     let playerIndex = _playerTurn();
-                    
+
                     if (playerIndex % 2 === 0) {
                         this.board[index] = players[0].sign;
                         _render(key, 0);
@@ -111,39 +112,40 @@ const game = (() => {
                 board[item[2]] === players[1].sign) {
                 players[1].won = true;
             }
-            
+
         })
     }
-    function _whichPlayerwon(index){
+    function _whichPlayerwon(index) {
         let tie = false;
-        for(let i in players){
-            if(players[i].won){
+        for (let i in players) {
+            if (players[i].won) {
                 _renderWinner(i)
             }
-            if(index === 8 && !players[0].won && !players[1].won){
+            if (index === 8 && !players[0].won && !players[1].won) {
                 tie = true;
-                _renderWinner(tie); 
+                _renderWinner(tie);
                 return; //to avoid, the function will be invoked 2-times, because the loop is for both players
             }
         }
-     }
-     function _renderWinner(i){
+    }
+    function _renderWinner(i) {
         let boxes = document.querySelectorAll('.box');
         let winnerText = document.createElement('h2');
-        for(let item of boxes){
+        for (let item of boxes) {
             item.style.display = 'none';
         }
-        if(i === true){
+        if (i === true) {
             winnerText.textContent = 'It´s a tie, try it again';
-        }else{
+        } else {
             winnerText.textContent = players[i].name + ' has won the game';
         }
         gameBoard.gameBoardHtml.style.display = 'flex';
         gameBoard.gameBoardHtml.style.flexFlow = 'wrap-reverse';
         gameBoard.gameBoardHtml.appendChild(winnerText);
-     }
+    }
+
+    btnRestartGame.addEventListener('click', () => { location.reload() })
     gameBoard.gameController(players);
 
-    //return gameBoard;
 })(gameInit.players, gameInit.gameBoardHtml)
 
