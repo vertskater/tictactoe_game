@@ -53,6 +53,7 @@ const gameInit = (() => {
 
 const game = (() => {
     let btnRestartGame = document.querySelector('#btn-restart');
+    let heading = document.querySelector('#heading');
     let players = gameInit.players;
     let gameBoard = {
         gameBoardHtml: gameInit.gameBoardHtml,
@@ -67,9 +68,11 @@ const game = (() => {
                     if (playerIndex % 2 === 0) {
                         this.board[index] = players[0].sign;
                         _render(key, 0);
+                        heading.textContent = players[1].name + ' to move'
                     } else {
                         this.board[index] = players[1].sign;
                         _render(key, 1);
+                        heading.textContent = players[0].name + ' to move'
                     }
                     _gameOutcome(this.board);
                     _whichPlayerwon(playerIndex);
@@ -136,8 +139,10 @@ const game = (() => {
         }
         if (i === true) {
             winnerText.textContent = 'It´s a tie, try it again';
+            heading.textContent = 'End of Game'
         } else {
             winnerText.textContent = players[i].name + ' has won the game';
+            heading.textContent = 'End of Game'
         }
         gameBoard.gameBoardHtml.style.display = 'flex';
         gameBoard.gameBoardHtml.style.flexFlow = 'wrap-reverse';
