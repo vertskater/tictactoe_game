@@ -56,28 +56,34 @@ const game = (() => {
     let heading = document.querySelector('#heading');
     let players = gameInit.players;
     let gameBoard = {
+        gameBoardItems: document.querySelectorAll('.box'),
         gameBoardHtml: gameInit.gameBoardHtml,
         board: [],
         gameController: function () {
-            this.gameBoardHtml.addEventListener('click', (e) => {
-                if (e.target.matches('.box')) {
-                    let key = e.target;
-                    let index = key.dataset.index;
-                    let playerIndex = _playerTurn();
+            for(let item of this.gameBoardItems){
+                item.addEventListener('click', _handleEvent);
+            }
+        }
+    }
 
-                    if (playerIndex % 2 === 0) {
-                        this.board[index] = players[0].sign;
-                        _render(key, 0);
-                        heading.textContent = players[1].name + ' to move'
-                    } else {
-                        this.board[index] = players[1].sign;
-                        _render(key, 1);
-                        heading.textContent = players[0].name + ' to move'
-                    }
-                    _gameOutcome(this.board);
-                    _whichPlayerwon(playerIndex);
-                }
-            })
+    function _handleEvent(e) {
+        let playerIndex = _playerTurn();
+        if (e.target.matches('.box')) {
+            let key = e.target;
+            let index = key.dataset.index;
+            if (playerIndex % 2 === 0) {
+                gameBoard.board[index] = players[0].sign;
+                _render(key, 0);
+                key.removeEventListener('click', _handleEvent);
+                heading.textContent = players[1].name + ' to move'
+            } else {
+                gameBoard.board[index] = players[1].sign;
+                _render(key, 1);
+                key.removeEventListener('click', _handleEvent);
+                heading.textContent = players[0].name + ' to move'
+            }
+            _gameOutcome(gameBoard.board);
+            _whichPlayerwon(playerIndex);
         }
     }
     gameBoard.board.length = 9;
